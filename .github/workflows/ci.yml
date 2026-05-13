@@ -1,0 +1,28 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  forge:
+    name: forge build + fmt
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: stable
+
+      - name: forge --version
+        run: forge --version
+
+      - name: forge fmt --check
+        run: forge fmt --check
+
+      - name: forge build
+        run: forge build --sizes
