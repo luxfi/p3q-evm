@@ -9,7 +9,7 @@ on:
 jobs:
   forge:
     name: forge build + fmt
-    runs-on: ubuntu-latest
+    runs-on: linux-amd64
     steps:
       - uses: actions/checkout@v4
 
